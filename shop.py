@@ -426,6 +426,8 @@ def pet_shop(pet_shop_stock):
 
         elif buy_pet == "g" or buy_pet == "G":  # add gold, for debug purposes only
             gold += 10
+            for i in team:
+                i.exp = 5
 
         time.sleep(0.5)
 
@@ -445,12 +447,12 @@ def buy_pets(pet_numbers, buy_pet, psc, horse_count):
         if len(team) >= 1:
             rand_int_1 = random.randrange(len(team))
             rand_pet_1 = team[rand_int_1]
-            rand_pet_1.attack += 1
-            rand_pet_1.health += 1
+            rand_pet_1.attack += 1 * psc[int(buy_pet)].level
+            rand_pet_1.health += 1 * psc[int(buy_pet)].level
             print(
                 f"{Style.BRIGHT}{Fore.YELLOW}{rand_int_1} {Fore.CYAN}{rand_pet_1.name}{Style.RESET_ALL}"
-                f" gained {Style.BRIGHT}1 {Fore.RED}ATK{Style.RESET_ALL} and {Style.BRIGHT}1 {Fore.RED}"
-                f"HP{Style.RESET_ALL}!")
+                f" gained {Style.BRIGHT}{1 * psc[int(buy_pet)].level} {Fore.RED}ATK{Style.RESET_ALL} and {Style.BRIGHT}"
+                f"{1 * psc[int(buy_pet)].level} {Fore.RED}HP{Style.RESET_ALL}!")
 
     team.append(psc[int(buy_pet)])
     psc[int(buy_pet)].level += 1  # set pet level to 1
@@ -586,8 +588,8 @@ def sell_pet(new_gold, psc):
         team.remove(spc)  # removes sold pet from 'team'
 
         if spc.name == "PIG":  # if sold pet is a pig
-            new_gold += 1  # gain 1 extra gold!
-            print(f"{Style.BRIGHT}{Fore.CYAN}PIG{Style.RESET_ALL} sold. You gained 2 gold.")
+            new_gold += spc.level  # gain extra gold!
+            print(f"{Style.BRIGHT}{Fore.CYAN}PIG{Style.RESET_ALL} sold. You gained {spc.level + 1} gold.")
 
         elif spc.name == "BEAVER":
             if len(team) > 1:
@@ -602,30 +604,30 @@ def sell_pet(new_gold, psc):
                 rand_pet_1.health += spc.level
                 rand_pet_2.health += spc.level
 
-                print(f"{Style.BRIGHT}{Fore.CYAN}BEAVER{Style.RESET_ALL} sold. You gained 1 gold.")
+                print(f"{Style.BRIGHT}{Fore.CYAN}BEAVER{Style.RESET_ALL} sold. You gained {spc.level} gold.")
                 print(f"{Style.BRIGHT}{Fore.YELLOW}{rand_int_1} {Fore.CYAN}{rand_pet_1.name}{Style.RESET_ALL} and"
                       f" {Style.BRIGHT}{Fore.YELLOW}{rand_int_2} {Fore.CYAN}{rand_pet_2.name}{Style.RESET_ALL} "
-                      f"both gained {Style.BRIGHT}1 {Fore.RED}HP{Style.RESET_ALL}!")
+                      f"both gained {Style.BRIGHT}{spc.level} {Fore.RED}HP{Style.RESET_ALL}!")
             elif len(team) == 1:
                 for i in range(len(team)):
                     team[i].health += 1
-                    print(f"{Style.BRIGHT}{Fore.CYAN}BEAVER{Style.RESET_ALL} sold. You gained 1 gold.")
+                    print(f"{Style.BRIGHT}{Fore.CYAN}BEAVER{Style.RESET_ALL} sold. You gained {spc.level} gold.")
                     print(f"{Style.BRIGHT}{Fore.YELLOW}{i} {Fore.CYAN}{team[i].name}{Style.RESET_ALL} "
-                          f"gained {Style.BRIGHT}1 {Fore.RED}HP{Style.RESET_ALL}!")
+                          f"gained {Style.BRIGHT}{spc.level} {Fore.RED}HP{Style.RESET_ALL}!")
             else:
-                print(f"{Style.BRIGHT}{Fore.CYAN}BEAVER{Style.RESET_ALL} sold. You gained 1 gold.")
+                print(f"{Style.BRIGHT}{Fore.CYAN}BEAVER{Style.RESET_ALL} sold. You gained {spc.level} gold.")
 
         elif spc.name == "DUCK":
             for i in psc:
                 i.health += spc.level
 
-            print(f"{Style.BRIGHT}{Fore.CYAN}DUCK{Style.RESET_ALL} sold. You gained 1 gold.")
-            print(f"All shop pets gained {Style.BRIGHT}1 {Fore.RED}HP{Style.RESET_ALL}!")
+            print(f"{Style.BRIGHT}{Fore.CYAN}DUCK{Style.RESET_ALL} sold. You gained {spc.level} gold.")
+            print(f"All shop pets gained {Style.BRIGHT}{spc.level} {Fore.RED}HP{Style.RESET_ALL}!")
 
         else:
-            print(f"{Style.BRIGHT}{Fore.CYAN}{spc.name}{Style.RESET_ALL} sold. You gained 1 gold.")
+            print(f"{Style.BRIGHT}{Fore.CYAN}{spc.name}{Style.RESET_ALL} sold. You gained {spc.level} gold.")
 
-        new_gold += 1
+        new_gold += spc.level
 
     return new_gold
 

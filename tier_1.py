@@ -24,8 +24,8 @@ class Ant(Pet):
                     pet_index = random.randrange(len(team))
 
                 rand_pet = team[pet_index]
-                rand_pet.attack += 2*self.level
-                rand_pet.health += 1*self.level
+                rand_pet.attack += 2 * self.level
+                rand_pet.health += 1 * self.level
 
                 rand_pet.atk_mod = True
                 rand_pet.hp_mod = True
