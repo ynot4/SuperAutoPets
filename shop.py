@@ -444,6 +444,7 @@ def buy_pets(pet_numbers, buy_pet, psc, horse_count):
         frozen_indexes.remove(buy_pet)
 
     if psc[int(buy_pet)].name == "OTTER":
+        psc[int(buy_pet)].level += 1  # set pet level to 1
         if len(team) >= 1:
             rand_int_1 = random.randrange(len(team))
             rand_pet_1 = team[rand_int_1]
@@ -588,7 +589,7 @@ def sell_pet(new_gold, psc):
         team.remove(spc)  # removes sold pet from 'team'
 
         if spc.name == "PIG":  # if sold pet is a pig
-            new_gold += spc.level  # gain extra gold!
+            new_gold += 1  # gain extra gold!
             print(f"{Style.BRIGHT}{Fore.CYAN}PIG{Style.RESET_ALL} sold. You gained {spc.level + 1} gold.")
 
         elif spc.name == "BEAVER":
