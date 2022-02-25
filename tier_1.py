@@ -119,10 +119,13 @@ class Mosquito(Pet):
         Pet.__init__(self, "MOSQUITO", 2, 2, "Start of battle: Deal 1 damage to 1 random enemy.")
 
 
-def mosquito_check(p, b, speed=1.0):
+def mosquito_check(p, b, stepthru, speed=1.0):
+
+    has_mosquito = False
 
     for i in range(len(shop.team)):
         if shop.team[i].name == "MOSQUITO":  # if a mosquito is in 'team'
+            has_mosquito = True
             rand_int_1 = random.randrange(len(battle.enemy_team))  # choose random pet on enemy team
             if len(shop.team) > 1:
                 while battle.enemy_team[rand_int_1].health <= 0:  # shouldn't attack already dead pets
@@ -150,6 +153,7 @@ def mosquito_check(p, b, speed=1.0):
 
     for i in range(len(battle.enemy_team)):
         if battle.enemy_team[i].name == "MOSQUITO":  # if a mosquito is in 'enemy_team'
+            has_mosquito = True
             rand_int_2 = random.randrange(len(shop.team))  # choose random pet on player's team
             if len(shop.team) > 1:
                 while shop.team[rand_int_2].health <= 0:  # shouldn't attack already dead pets
@@ -177,6 +181,9 @@ def mosquito_check(p, b, speed=1.0):
 
     time.sleep(speed)
     check_done = True
+    if has_mosquito:
+        if stepthru:
+            input("\nPress enter to continue.")
     return p, b, check_done
 
 

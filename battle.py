@@ -48,10 +48,8 @@ enemy_team = []  # pets in enemy team
 
 def status_battle(pet, j, side="none"):  # prints pet's attributes, same as 'status'
 
-    colour = ""  # colour to display pet name
-
     if side == "team":
-        colour = Fore.BLUE
+        colour = Fore.BLUE  # colour to display pet name
     elif side == "enemy":
         colour = Fore.LIGHTGREEN_EX
     else:
@@ -104,7 +102,7 @@ def print_team_battle():
         print("<empty>")
 
 
-def init_enemy_team(pet_shop_stock, team_name):
+def init_enemy_team(team_name):
 
     enemy_team_name = init_enemy_team_name()
 
@@ -162,13 +160,23 @@ def get_speed():
             speed = 0.5
         else:
             print("Invalid input.")
-
+    time.sleep(0.5)
     print("")
     print(f"Your pets will have {Fore.BLUE}blue{Fore.RESET} names and the enemy's will have {Fore.LIGHTGREEN_EX}green"
-          f"{Fore.RESET} names.")
-    input(f"{Style.BRIGHT}Press enter to start the battle! ")
+          f"{Fore.RESET} names.\n")
+    time.sleep(0.5)
+    stepthru = False
 
-    return speed
+    enter = input("Do you want to use the enter key to step through the battle? Enter 'y' for yes or 'n' for no: ")
+    while enter != "y" and enter != "Y" and enter != "n" and enter != "N":
+        enter = input("Invalid input. Enter 'y' for yes or 'n' for no: ")
+
+    if enter == "y" or enter == "Y":
+        stepthru = True
+
+    input(f"\n{Style.BRIGHT}Press enter to start the battle! ")
+
+    return speed, stepthru
 
 
 def print_both_teams(team_name, enemy_team_name):
@@ -215,7 +223,7 @@ def print_both_teams(team_name, enemy_team_name):
 
 def battle_start():
 
-    speed = get_speed()
+    speed, stepthru = get_speed()
     game_over = False
 
     os.system('cls')
@@ -243,14 +251,16 @@ def battle_start():
     a = 0  # attack count, how many attacks have been made
 
     while not game_over:
-        print(f"{Fore.BLUE}{Style.BRIGHT}PET {p} {Fore.WHITE}VS {Fore.LIGHTGREEN_EX}PET {b}\n")
+        print(f"{Fore.BLUE}{Style.BRIGHT}PET {p}/{len(shop.team) - 1} {Fore.WHITE}VS {Fore.LIGHTGREEN_EX}PET {b}/"
+              f"{len(enemy_team) - 1}\n")
         if shop.team:  # if team not empty
             print_both_teams(team_name, enemy_team_name)
             if a == 0:  # at start of battle before first pet attacks, check for mosquitoes in both teams
-                p, b, mosquito_check = tier_1.mosquito_check(p, b, speed)
+                p, b, mosquito_check = tier_1.mosquito_check(p, b, stepthru, speed)
                 if mosquito_check:
                     os.system('cls')
-                print(f"{Fore.BLUE}{Style.BRIGHT}PET {p} {Fore.WHITE}VS {Fore.LIGHTGREEN_EX}PET {b}\n")
+                print(f"{Fore.BLUE}{Style.BRIGHT}PET {p}/{len(shop.team) - 1} {Fore.WHITE}VS {Fore.LIGHTGREEN_EX}PET "
+                      f"{b}/{len(enemy_team) - 1}\n")
                 print_both_teams(team_name, enemy_team_name)
                 a += 1
 
@@ -271,6 +281,8 @@ def battle_start():
                 shop.team[p].attacks(p, b, enemy_team[b], speed)  # attack move
 
             time.sleep(speed)
+            if stepthru:
+                input("\nPress enter to continue.")
             os.system('cls')
 
             if shop.team[p].dead and not enemy_team[b].dead:  # if your pet dies and enemy's doesn't

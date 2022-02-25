@@ -50,7 +50,7 @@ while not game_lost:
 
     os.system('cls')
 
-    battle.init_enemy_team(pet_shop_stock, team_name)
+    battle.init_enemy_team(team_name)
 
     battle.battle_start()
 
