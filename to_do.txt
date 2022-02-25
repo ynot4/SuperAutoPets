@@ -3,10 +3,11 @@ TO-DO LIST
 pets abilities should improve with level up
 ["FISH", "MOSQUITO"]
 
-debug tool to add exp
 add fish ability
 
 step through battles with enter key
+
+add win if win count == 10 and add lose if losses == 10
 
 zombie cricket should not be summoned if you already have a full team of 5 animals
 
@@ -15,8 +16,7 @@ enemy team order should be more logical, e.g. ants at the front, horses at back 
 
 create tier system for pet rarities
     will have to create a new 'pet_tiers' folder to store all the 'tier_x' modules when all pets are implemented
-
-print(f"p={p}, b={b}")  # remember to remove this in release
+    add all new pets
 
 IMPORTANT BUGS
 --------------

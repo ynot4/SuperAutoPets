@@ -243,14 +243,14 @@ def battle_start():
     a = 0  # attack count, how many attacks have been made
 
     while not game_over:
-        print(f"p={p}, b={b}")  # remember to remove this in release
+        print(f"{Fore.BLUE}{Style.BRIGHT}PET {p} {Fore.WHITE}VS {Fore.LIGHTGREEN_EX}PET {b}\n")
         if shop.team:  # if team not empty
             print_both_teams(team_name, enemy_team_name)
             if a == 0:  # at start of battle before first pet attacks, check for mosquitoes in both teams
                 p, b, mosquito_check = tier_1.mosquito_check(p, b, speed)
                 if mosquito_check:
                     os.system('cls')
-                print(f"p={p}, b={b}")
+                print(f"{Fore.BLUE}{Style.BRIGHT}PET {p} {Fore.WHITE}VS {Fore.LIGHTGREEN_EX}PET {b}\n")
                 print_both_teams(team_name, enemy_team_name)
                 a += 1
 
