@@ -5,10 +5,6 @@ pets abilities should improve with level up
 
 add fish ability
 
-step through battles with enter key
-
-add win if win count == 10 and add lose if losses == 10
-
 zombie cricket should not be summoned if you already have a full team of 5 animals
 
 sometimes randomise enemy pet attributes, such as health, attack and tokens

@@ -27,10 +27,10 @@ time.sleep(1)
 
 input(f"{Style.BRIGHT}Press enter to start Arena Mode. ")
 
-game_lost = False
+game_over = False
 
 
-while not game_lost:
+while not game_over:
     if shop.turn <= 2:
         pet_shop_stock = 3  # number of pets in shop initially, should go up as you level up
     else:
@@ -63,4 +63,9 @@ while not game_lost:
     os.system('cls')
 
     if shop.lives <= 0:
-        game_lost = True
+        print(f"{Style.BRIGHT}GAME LOST!")
+        game_over = True
+
+    if shop.wins == 10:
+        print(f"{Style.BRIGHT}GAME WON!")
+        game_over = True
