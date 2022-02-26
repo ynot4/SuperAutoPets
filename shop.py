@@ -3,7 +3,7 @@ import food
 import ntc
 import os
 import random
-import tier_1
+from pet_tiers import tier_1
 import time
 
 

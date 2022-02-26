@@ -1,9 +1,7 @@
 import battle
 import colorama
-import ntc
-import random
 import shop
-import tier_1
+from pet_tiers import tier_1
 import time
 
 from colorama import Fore, Back, Style

@@ -1,4 +1,4 @@
-from tier_1 import *
+from pet_tiers.tier_1 import *
 from food import *
 
 
