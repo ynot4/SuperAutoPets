@@ -120,9 +120,9 @@ class Mosquito(Pet):
 
 
 def mosquito_check(p, b, stepthru, speed=1.0):
-
     has_mosquito = False
     attacked = []  # list of pets the mosquito has attacked
+    en_attacked = []  # list of pets the enemy mosquito has attacked
 
     for i in range(len(shop.team)):
         if shop.team[i].name == "MOSQUITO":  # if a mosquito is in 'team'
@@ -154,10 +154,11 @@ def mosquito_check(p, b, stepthru, speed=1.0):
                         if rand_int_1 == 0:
                             b += 1
                         time.sleep(speed)
+
             elif len(battle.enemy_team) < shop.team[i].level:  # if mosquito is able to attack more than number of pets
                 # in other team but there is not enough pets in the team
-                for j in range(shop.team[i].level):
-                    rand_int_1 = random.randrange(len(battle.enemy_team))  # choose random pet on enemy team
+                for j in range(len(battle.enemy_team)):
+                    rand_int_1 = random.randrange(shop.team[i].level)  # choose random pet on enemy team
                     while battle.enemy_team[rand_int_1].health <= 0 or rand_int_1 in attacked:  # shouldn't attack
                         # already dead pets or those already attacked
                         rand_int_1 = random.randrange(len(battle.enemy_team))
@@ -186,30 +187,62 @@ def mosquito_check(p, b, stepthru, speed=1.0):
     for i in range(len(battle.enemy_team)):
         if battle.enemy_team[i].name == "MOSQUITO":  # if a mosquito is in 'enemy_team'
             has_mosquito = True
-            rand_int_2 = random.randrange(len(shop.team))  # choose random pet on player's team
-            if len(shop.team) > 1:
-                while shop.team[rand_int_2].health <= 0:  # shouldn't attack already dead pets
-                    rand_int_2 = random.randrange(len(shop.team))
-            rand_pet_2 = shop.team[rand_int_2]
-            rand_pet_2.health -= 1  # take away 1 HP
-            print(f"{Fore.YELLOW}{Style.BRIGHT}{i} {Fore.LIGHTGREEN_EX}MOSQUITO{Style.RESET_ALL} did "
-                  f"{Style.BRIGHT}1{Style.RESET_ALL} damage to {Style.BRIGHT}{Fore.YELLOW}{rand_int_2} "
-                  f"{Fore.BLUE}{rand_pet_2.name}{Style.RESET_ALL}!")
-            time.sleep(speed)
-            if rand_pet_2.health <= 0:  # if player's pet dies from enemy mosquito's opening attack
-                rand_pet_2.dead = True
-                if rand_pet_2.name == "ANT":
-                    rand_pet_2.ant_faint(shop.team, p, side="team")
-                if rand_pet_2.name == "CRICKET":
-                    rand_pet_2.cricket_faint(shop.team, rand_int_2, side="team")
-                    # p -= 1
-                    rand_pet_2.dead = False
-                print(
-                    f"\n{Back.LIGHTRED_EX}{Fore.BLUE}{Style.BRIGHT}{rand_pet_2.name}{Fore.WHITE} died!"
-                    f"{Style.RESET_ALL}\n")
-                if rand_int_2 == 0:
-                    p += 1
-                time.sleep(speed)
+            if len(shop.team) >= battle.enemy_team[i].level:  # if enough pets for mosquito to attack most
+                for j in range(battle.enemy_team[i].level):
+                    rand_int_2 = random.randrange(len(shop.team))  # choose random pet on player's team
+                    while battle.enemy_team[rand_int_2].health <= 0 or rand_int_2 in en_attacked:  # shouldn't attack
+                        # already dead pets or those already attacked
+                        rand_int_2 = random.randrange(len(shop.team))
+                    en_attacked.append(rand_int_2)
+                    rand_pet_2 = battle.enemy_team[rand_int_2]
+                    rand_pet_2.health -= 1  # take away 1 HP
+                    print(f"{Fore.YELLOW}{Style.BRIGHT}{i} {Fore.LIGHTGREEN_EX}MOSQUITO{Style.RESET_ALL} did "
+                          f"{Style.BRIGHT}1{Style.RESET_ALL} damage to {Style.BRIGHT}{Fore.YELLOW}{rand_int_2} "
+                          f"{Fore.BLUE}{rand_pet_2.name}{Style.RESET_ALL}!")
+                    time.sleep(speed)
+                    if rand_pet_2.health <= 0:  # if enemy's pet dies from your mosquito's opening attack
+                        rand_pet_2.dead = True
+                        if rand_pet_2.name == "ANT":
+                            rand_pet_2.ant_faint(shop.team, p, side="team")
+                        if rand_pet_2.name == "CRICKET":
+                            rand_pet_2.cricket_faint(shop.team, rand_int_2, side="team")
+                            # p -= 1
+                            rand_pet_2.dead = False
+                        print(
+                            f"\n{Back.LIGHTRED_EX}{Fore.BLUE}{Style.BRIGHT}{rand_pet_2.name}{Fore.WHITE} died!"
+                            f"{Style.RESET_ALL}\n")
+                        if rand_int_2 == 0:
+                            p += 1
+                        time.sleep(speed)
+
+            elif len(shop.team) < battle.enemy_team[i].level:  # if mosquito is able to attack more than number of pets
+                # in other team but there is not enough pets in the team
+                for j in range(len(shop.team)):
+                    rand_int_2 = random.randrange(len(battle.enemy_team[i].level))  # choose random pet on player's team
+                    while battle.enemy_team[rand_int_2].health <= 0 or rand_int_2 in en_attacked:  # shouldn't attack
+                        # already dead pets or those already attacked
+                        rand_int_2 = random.randrange(len(shop.team))
+                    en_attacked.append(rand_int_2)
+                    rand_pet_2 = battle.enemy_team[rand_int_2]
+                    rand_pet_2.health -= 1  # take away 1 HP
+                    print(f"{Fore.YELLOW}{Style.BRIGHT}{i} {Fore.LIGHTGREEN_EX}MOSQUITO{Style.RESET_ALL} did "
+                          f"{Style.BRIGHT}1{Style.RESET_ALL} damage to {Style.BRIGHT}{Fore.YELLOW}{rand_int_2} "
+                          f"{Fore.BLUE}{rand_pet_2.name}{Style.RESET_ALL}!")
+                    time.sleep(speed)
+                    if rand_pet_2.health <= 0:  # if enemy's pet dies from your mosquito's opening attack
+                        rand_pet_2.dead = True
+                        if rand_pet_2.name == "ANT":
+                            rand_pet_2.ant_faint(shop.team, p, side="team")
+                        if rand_pet_2.name == "CRICKET":
+                            rand_pet_2.cricket_faint(shop.team, rand_int_2, side="team")
+                            # p -= 1
+                            rand_pet_2.dead = False
+                        print(
+                            f"\n{Back.LIGHTRED_EX}{Fore.BLUE}{Style.BRIGHT}{rand_pet_2.name}{Fore.WHITE} died!"
+                            f"{Style.RESET_ALL}\n")
+                        if rand_int_2 == 0:
+                            p += 1
+                        time.sleep(speed)
 
     time.sleep(speed)
     check_done = True
