@@ -7,7 +7,7 @@ add fish ability
 
 zombie cricket should not be summoned if you already have a full team of 5 animals
 
-sometimes randomise enemy pet attributes, such as health, attack and tokens
+sometimes randomise enemy pet attributes, such as health, attack, level and tokens
 enemy team order should be more logical, e.g. ants at the front, horses at back etc.
 
 create tier system for pet rarities
@@ -16,6 +16,7 @@ create tier system for pet rarities
 
 IMPORTANT BUGS
 --------------
+if pet at end dies from mosquito attack, and both last fighting pets die in battle, then game does not result in draw
 
 MAYBE IMPLEMENT
 ---------------

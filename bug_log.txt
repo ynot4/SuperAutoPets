@@ -1,0 +1,135 @@
+TURN 1, LIVES : 10, WINS : 0
+
+«YOUR TEAM»
+0 MOSQUITO (Lvl 3 ■■■) : ATK 2, HP 2. Start of battle: Deal 1 damage to 3 random enemies.
+1 FISH (Lvl 1 □□) : ATK 2, HP 3. Level-up: Give all friends +1 ATK and +1 HP.
+
+«PET SHOP»
+2 FISH : ATK 2, HP 3. Level-up: Give all friends +1 ATK and +1 HP.
+
+«FOOD SHOP»
+3 APPLE : Give an animal +1/+1.
+
+You have 11 gold.
+Buy a pet or food for 3 gold.
+Enter the number of the pet or food you want to buy or enter 'z' to end your turn.
+Enter 'a' to reorder the pets in your team.
+Enter 's' to sell one of your pets.
+Enter 'd' to merge two pets of the same type.
+Enter 'f' to freeze or unfreeze a pet or food in the store.
+You can also enter 'r' to get new pets in the shop for 1 gold: z
+
+End turn with excess gold? Enter 'y' for yes or any other character for no: y
+Ended turn.
+##############
+NAME YOUR TEAM
+##############
+
+0) Iconic
+1) Desolate
+2) Amazing
+
+Enter the number of the prefix you want, or enter 3 to auto-generate a team name: 3
+
+Your team name is The Iconic Eggplants.
+«THE ICONIC EGGPLANTS» (you)
+0 MOSQUITO : ATK 2, HP 2. Start of battle: Deal 1 damage to 3 random enemies.
+1 FISH : ATK 2, HP 3. Level-up: Give all friends +1 ATK and +1 HP.
+
+You are fighting against...
+The Sulking Streamers!
+
+«THE SULKING STREAMERS»
+0 ANT : ATK 2, HP 1. Faint: Give a random friend +2 ATK and +1 HP.
+1 CRICKET : ATK 1, HP 2. Faint: Summon a 1/1 Zombie Cricket.
+2 ANT : ATK 2, HP 1. Faint: Give a random friend +2 ATK and +1 HP.
+
+How fast do you want the battle to be? Enter 'n' for normal and 'f' for fast. n
+
+Your pets will have blue names and the enemy's will have green names.
+
+Do you want to use the enter key to step through the battle? Enter 'y' for yes or 'n' for no: y
+
+Press enter to start the battle!
+PET 0/1 VS PET 0/2
+
+«THE ICONIC EGGPLANTS» (you)
+0 MOSQUITO : ATK 2, HP 2. Start of battle: Deal 1 damage to 3 random enemies.
+1 FISH : ATK 2, HP 3. Level-up: Give all friends +1 ATK and +1 HP.
+
+«THE SULKING STREAMERS»
+0 ANT : ATK 2, HP 1. Faint: Give a random friend +2 ATK and +1 HP.
+1 CRICKET : ATK 1, HP 2. Faint: Summon a 1/1 Zombie Cricket.
+2 ANT : ATK 2, HP 1. Faint: Give a random friend +2 ATK and +1 HP.
+
+0 MOSQUITO did 1 damage to 2 ANT!
+1 CRICKET gained 2 ATK and 1 HP!
+
+
+ANT died!
+
+0 MOSQUITO did 1 damage to 0 ANT!
+1 CRICKET gained 2 ATK and 1 HP!
+
+
+ANT died!
+
+
+Press enter to continue.
+
+PET 0/1 VS PET 1/2
+
+«THE ICONIC EGGPLANTS» (you)
+0 MOSQUITO : ATK 2, HP 2. Start of battle: Deal 1 damage to 3 random enemies.
+1 FISH : ATK 2, HP 3. Level-up: Give all friends +1 ATK and +1 HP.
+
+«THE SULKING STREAMERS»
+1 CRICKET : ATK 1*, HP 2*. Faint: Summon a 1/1 Zombie Cricket.
+
+0 MOSQUITO did 2 damage to 1 CRICKET!
+1 CRICKET did 1 damage to 0 MOSQUITO!
+
+0 MOSQUITO : ATK 2, HP 1.
+1 CRICKET : ATK 1, HP 0.
+
+CRICKET died!
+
+1 ZOMBIE CRICKET was added to the enemy team!
+
+
+Press enter to continue.PET 0/1 VS PET 1/2
+
+«THE ICONIC EGGPLANTS» (you)
+0 MOSQUITO : ATK 2, HP 1. Start of battle: Deal 1 damage to 3 random enemies.
+1 FISH : ATK 2, HP 3. Level-up: Give all friends +1 ATK and +1 HP.
+
+«THE SULKING STREAMERS»
+<empty>
+
+0 MOSQUITO did 2 damage to 1 ZOMBIE CRICKET!
+1 ZOMBIE CRICKET did 0 damage to 0 MOSQUITO!
+
+0 MOSQUITO : ATK 2, HP 1.
+1 ZOMBIE CRICKET : ATK 0, HP -2.
+
+ZOMBIE CRICKET died!
+
+
+Press enter to continue.
+PET 0/1 VS PET 3/2
+Traceback (most recent call last):
+  File "C:\Users\tonys\PycharmProjects\SuperAutoPets\main.py", line 55, in <module>
+    battle.battle_start()
+  File "C:\Users\tonys\PycharmProjects\SuperAutoPets\battle.py", line 281, in battle_start
+    shop.team[p].attacks(p, b, enemy_team[b], speed)  # attack move
+IndexError: list index out of range
+
+«THE ICONIC EGGPLANTS» (you)
+0 MOSQUITO : ATK 2, HP 1. Start of battle: Deal 1 damage to 3 random enemies.
+1 FISH : ATK 2, HP 3. Level-up: Give all friends +1 ATK and +1 HP.
+
+«THE SULKING STREAMERS»
+<empty>
+
+
+Process finished with exit code 1

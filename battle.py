@@ -125,7 +125,8 @@ def init_enemy_team(team_name):
     enemy_team_classes = ntc.name_to_class(enemy_team)   # converts the name strings to classes
     enemy_team.clear()  # clears the names from the 'enemy_team' list...
     for i in range(number_of_pets):  # so we can add the classes instead
-        enemy_team.append(enemy_team_classes[int(i)])  # 'team' should be a list of classes
+        enemy_team.append(enemy_team_classes[i])  # 'team' should be a list of classes
+        enemy_team[i].level = 1  # have to init level for some pet functions
 
     print(f"{Fore.BLACK}{Back.BLUE}{Style.BRIGHT}«{team_name.upper()}»{Style.RESET_ALL} (you)")
     print_team_battle()
