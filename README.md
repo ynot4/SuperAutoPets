@@ -6,4 +6,4 @@ This is my first ever Python project, so the code is heavily unoptimised and use
 
 If you decide to try it out, I would appreciate any suggestions to improve.
 
-This project is not affiliated with Team Wood Games, the creators of the original.
+This project is not affiliated with Team Wood Games, the creators of the original game.
