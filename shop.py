@@ -426,7 +426,10 @@ def pet_shop(pet_shop_stock):
         ##### DEBUG FUNCTIONS #####
 
         elif buy_pet == "g" or buy_pet == "G":  # add gold, for debug purposes only
-            gold += 10
+            if gold > 12:
+                gold = 1
+            else:
+                gold = 100
 
         elif buy_pet == "x" or buy_pet == "X":  # add experience points
             for i in team:
@@ -714,6 +717,8 @@ def merge_pets():
                 team[int(merge_with)].exp += team[int(merge)].exp + 1  # add exp of both pets
                 if team[int(merge)].effect and not team[int(merge_with)].effect:  # transfer effect
                     team[int(merge_with)].effect = team[int(merge)].effect
+                print("Pets merged.")
+
                 if team[int(merge_with)].name == "FISH":  # if pet is fish
                     if 2 <= team[int(merge_with)].exp < 5:  # if fish has levelled up to level 2
                         for i in range(len(team)):
@@ -723,6 +728,7 @@ def merge_pets():
                                 team[i].attack += 1
                                 team[i].health += 1
                         print(f"All pets in your team gained {Style.BRIGHT}1 {Fore.RED}HP{Style.RESET_ALL}!")
+                        time.sleep(0.5)
                     elif team[int(merge_with)].exp == 5:  # if fish has levelled up to level 3
                         for i in range(len(team)):
                             if i == int(merge_with):
@@ -731,8 +737,9 @@ def merge_pets():
                                 team[i].attack += 2
                                 team[i].health += 2
                         print(f"All pets in your team gained {Style.BRIGHT}2 {Fore.RED}HP{Style.RESET_ALL}!")
+                        time.sleep(0.5)
+
                 team.pop(int(merge))
-                print("Pets merged.")
 
 
 def freeze_pet(pet_numbers, true_fn, psc, foods, pet_shop_stock, food_numbers):
