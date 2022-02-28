@@ -1,9 +1,7 @@
 TO-DO LIST
 ----------
-pets abilities should improve with level up
-["FISH", "MOSQUITO"]
-
 add fish ability
+ability should improve with level up
 
 zombie cricket should not be summoned if you already have a full team of 5 animals
 
@@ -13,6 +11,7 @@ enemy team order should be more logical, e.g. ants at the front, horses at back 
 create tier system for pet rarities
     will have to create a new 'pet_tiers' folder to store all the 'tier_x' modules when all pets are implemented
     add all new pets
+    add all foods
 
 IMPORTANT BUGS
 --------------
