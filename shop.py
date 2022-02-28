@@ -323,8 +323,9 @@ def pet_shop(pet_shop_stock):
         buy_pet = input(f"{Style.BRIGHT}You can also enter 'r' to get new pets in the shop for 1 gold: ")
         print("")
 
-        if buy_pet not in pet_numbers and buy_pet not in true_fn and buy_pet not in "zZrRaAsSgGfFadD":  # if the pet or
-            # food you want to buy is not available or does not exist, or you don't enter a valid letter for a function
+        if buy_pet not in pet_numbers and buy_pet not in true_fn and buy_pet not in "zZrRaAsSgGfFadDxX":  # if the
+            # pet or food you want to buy is not available or does not exist, or you don't enter a valid letter for a
+            # function
             print("That pet isn't available.")
 
         ##### BUYING PET #####
@@ -426,8 +427,10 @@ def pet_shop(pet_shop_stock):
 
         elif buy_pet == "g" or buy_pet == "G":  # add gold, for debug purposes only
             gold += 10
+
+        elif buy_pet == "x" or buy_pet == "X":  # add experience points
             for i in team:
-                i.exp = 5
+                i.exp += 1
 
         time.sleep(0.5)
 
@@ -711,6 +714,23 @@ def merge_pets():
                 team[int(merge_with)].exp += team[int(merge)].exp + 1  # add exp of both pets
                 if team[int(merge)].effect and not team[int(merge_with)].effect:  # transfer effect
                     team[int(merge_with)].effect = team[int(merge)].effect
+                if team[int(merge_with)].name == "FISH":  # if pet is fish
+                    if 2 <= team[int(merge_with)].exp < 5:  # if fish has levelled up to level 2
+                        for i in range(len(team)):
+                            if i == int(merge_with):
+                                continue
+                            else:
+                                team[i].attack += 1
+                                team[i].health += 1
+                        print(f"All pets in your team gained {Style.BRIGHT}1 {Fore.RED}HP{Style.RESET_ALL}!")
+                    elif team[int(merge_with)].exp == 5:  # if fish has levelled up to level 3
+                        for i in range(len(team)):
+                            if i == int(merge_with):
+                                continue
+                            else:
+                                team[i].attack += 2
+                                team[i].health += 2
+                        print(f"All pets in your team gained {Style.BRIGHT}2 {Fore.RED}HP{Style.RESET_ALL}!")
                 team.pop(int(merge))
                 print("Pets merged.")
 
