@@ -9,6 +9,7 @@ create tier system for pet rarities
     will have to create a new 'pet_tiers' folder to store all the 'tier_x' modules when all pets are implemented
     add all new pets
     add all foods
+    add sloth
 
 IMPORTANT BUGS
 --------------
