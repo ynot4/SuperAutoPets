@@ -259,7 +259,7 @@ class Otter(Pet):
 
 class Pig(Pet):
     def __init__(self):
-        Pet.__init__(self, "PIG", 3, 1, "Sell: Gain 1 gold.")
+        Pet.__init__(self, "PIG", 3, 1, "Sell: Gain an extra 1 gold.")
 
 
 class ZombieCricket(Pet):

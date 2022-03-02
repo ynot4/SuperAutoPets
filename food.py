@@ -10,10 +10,24 @@ class Food:
 
 class Apple(Food):
     def __init__(self):
-        Food.__init__(self, "APPLE", "Give an animal +1/+1.")
+        Food.__init__(self, "APPLE", "Give a pet +1 ATK and +1 HP.")
 
 
 class Honey(Food):
     def __init__(self):
-        Food.__init__(self, "HONEY", "Give an animal Honey Bee. (Summon a 1/1 Bee after fainting.)")
+        Food.__init__(self, "HONEY", "Give a pet Honey Bee. (Summon a 1/1 Bee after fainting.)")
 
+
+class Cupcake(Food):
+    def __init__(self):
+        Food.__init__(self, "CUPCAKE", "Give a pet +3 ATK and +3 HP until end of battle.")
+
+
+class MeatBone(Food):
+    def __init__(self):
+        Food.__init__(self, "MEAT BONE", "Give a pet Bone Attack. (Attack for 5 more damage.)")
+
+
+class SleepingPill(Food):
+    def __init__(self):
+        Food.__init__(self, "SLEEPING PILL", "Make a friendly pet faint.")

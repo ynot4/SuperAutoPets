@@ -123,6 +123,8 @@ def pet_level_descriptions(pet):  # updates pet descriptions as they level up
     elif pet.name == "FISH":
         if pet.level == 2:
             pet.description = "Level-up: Give all friends +2 ATK and +2 HP."
+        if pet.level == 3:
+            pet.description = ""
     elif pet.name == "HORSE":
         if pet.level == 2:
             pet.description = "Friend summoned: Give it +2 ATK until the end of battle."
@@ -140,9 +142,9 @@ def pet_level_descriptions(pet):  # updates pet descriptions as they level up
             pet.description = "Buy: Give a random friend +3 ATK and +3 HP."
     elif pet.name == "PIG":
         if pet.level == 2:
-            pet.description = "Sell: Gain 2 gold."
+            pet.description = "Sell: Gain an extra 2 gold."
         elif pet.level == 3:
-            pet.description = "Sell: Gain 3 gold."
+            pet.description = "Sell: Gain an extra 3 gold."
 
 
 def food_description(index, food):
