@@ -54,23 +54,25 @@ class Cricket(Pet):
         bee = False  # if cricket has honey bee effect
 
         if team[index].effect == "HONEY BEE":  # if cricket has honey bee effect, then zombie cricket AND bee will spawn
-            team.insert(index + 1, tier_1.Bee())
-            horse_ability(team, team[index + 1], index + 1)
-            bee = True
+            if len(team) < 5:
+                team.insert(index + 1, tier_1.Bee())
+                horse_ability(team, team[index + 1], index + 1)
+                bee = True
 
         team.pop(index)
-        team.insert(index, ZombieCricket())
-        team[index].attack = self.level
-        team[index].health = self.level
+        if len(team) < 5:
+            team.insert(index, ZombieCricket())
+            team[index].attack = self.level
+            team[index].health = self.level
 
-        horse_ability(team, team[index], index)
+            horse_ability(team, team[index], index)
 
-        if side == "team":
-            print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.BLUE}{team[index].name}{Style.RESET_ALL} was added "
-                  f"to your team!\n")
-        else:
-            print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.LIGHTGREEN_EX}{team[index].name}{Style.RESET_ALL}"
-                  f" was added to the enemy team!\n")
+            if side == "team":
+                print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.BLUE}{team[index].name}{Style.RESET_ALL} was added "
+                      f"to your team!\n")
+            else:
+                print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.LIGHTGREEN_EX}{team[index].name}{Style.RESET_ALL}"
+                      f" was added to the enemy team!\n")
 
         if bee:
             if side == "team":

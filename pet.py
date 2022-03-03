@@ -11,15 +11,16 @@ colorama.init(autoreset=True)
 
 def honey_bee(team, index, side):
     team.pop(index)
-    team.insert(index, tier_1.Bee())
-    tier_1.horse_ability(team, team[index], index)
+    if len(team) < 5:
+        team.insert(index, tier_1.Bee())
+        tier_1.horse_ability(team, team[index], index)
 
-    if side == "team":
-        print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.BLUE}{team[index].name}{Style.RESET_ALL} was added "
-              f"to your team!\n")
-    else:
-        print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.LIGHTGREEN_EX}{team[index].name}{Style.RESET_ALL}"
-              f" was added to the enemy team!\n")
+        if side == "team":
+            print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.BLUE}{team[index].name}{Style.RESET_ALL} was added "
+                  f"to your team!\n")
+        else:
+            print(f"{Style.BRIGHT}{Fore.YELLOW}{index} {Fore.LIGHTGREEN_EX}{team[index].name}{Style.RESET_ALL}"
+                  f" was added to the enemy team!\n")
 
     index += 1
 
