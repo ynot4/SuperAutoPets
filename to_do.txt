@@ -1,7 +1,5 @@
 TO-DO LIST
 ----------
-zombie cricket should not be summoned if you already have a full team of 5 animals
-
 sometimes randomise enemy pet attributes, such as health, attack, level and tokens
 enemy team order should be more logical, e.g. ants at the front, horses at back etc.
 
